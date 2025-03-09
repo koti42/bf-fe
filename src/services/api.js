@@ -98,7 +98,6 @@ export const productService = {
     try {
       return apiClient.get(`/products/get-product-detail-by-name/${productSlug}`);
     } catch (error) {
-      console.error(`Ürün detayı alınırken hata oluştu: ${productSlug}`, error);
       return Promise.reject(error);
     }
   },
@@ -111,12 +110,10 @@ export const productService = {
     try {
       return apiClient.get(`/products/get-product-detail-calendar-days/${productSlug}`);
     } catch (error) {
-      console.error(`Teslimat günleri alınırken hata oluştu: ${productSlug}`, error);
       return Promise.reject(error);
     }
   },
 
-  // Belirli gün için teslimat saat aralıklarını getir
   getProductCalendarDaySlots(productSlug, date) {
     if (!productSlug || !date) {
       return Promise.reject(new Error('Ürün slug\'ı veya tarih belirtilmedi'));
